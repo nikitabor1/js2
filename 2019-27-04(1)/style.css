@@ -1,0 +1,44 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+
+header{
+        display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: black;
+    color: aliceblue;
+    padding: 20px;
+}
+
+.btn-cart {
+    height: 80px;
+    width: 160px;
+    color: white;
+    background-color: black;
+    font-size: 1.5em;   
+}
+main{
+padding: 15px;
+}
+
+.products {
+    display: flex;
+    justify-content: space-around;
+    
+}
+.product-item{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;    
+    height: 100px;
+    width: 200px;
+    align-items: center;
+    border: solid 5px;
+}
+h3{
+    padding: 5px;
+}
