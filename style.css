@@ -5,8 +5,8 @@
 }
 
 
-header{
-        display: flex;
+header {
+    display: flex;
     align-items: center;
     justify-content: space-around;
     background-color: black;
@@ -19,26 +19,53 @@ header{
     width: 160px;
     color: white;
     background-color: black;
-    font-size: 1.5em;   
+    font-size: 1.5em;
+    border: 1px solid white;
 }
-main{
-padding: 15px;
+
+main {
+    padding: 15px;
 }
 
 .products {
     display: flex;
     justify-content: space-around;
-    
+
 }
-.product-item{
-    display:flex;
+
+.cart {
+    display: flex;
+    justify-content: space-around;
     flex-direction: column;
-    justify-content: center;    
+
+}
+
+.container {
+    border: solid 2px;
+    padding: 10px;
+}
+
+.product-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     height: 100px;
     width: 200px;
     align-items: center;
     border: solid 5px;
 }
-h3{
+
+.product-item-cart {
+    display: flex;
+    align-items: center;
+}
+
+h3,
+h4 {
     padding: 5px;
+}
+
+.cartTotal {
+    display: flex;
+    flex-direction: column;
 }
