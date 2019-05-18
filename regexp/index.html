@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Regular Expressions home work</title>
+</head>
+
+<body>
+
+
+    <main>
+        <h5>Первоначальный текст</h5>
+        <p id="text">
+            One:В 'Hi Mary.' <br>
+            Two:В 'Oh, hi.' <br>
+            One:В 'How are you doing?' <br>
+            Two:В 'I'm doing alright. How about you?' <br>
+            One:В 'Not too bad. The weather is great isn't it?' <br>
+            Two:В 'Yes. It's absolutely beautiful today.' <br>
+            One:В 'I wish it was like this more frequently.' <br>
+            Two:В 'Me too.' <br>
+            One:В 'So where are you going now?' <br>
+            Two:В 'I'm going to meet a friend of mine at the department store.' <br>
+            One:В 'Going to do a little shopping?' <br>
+            Two:В 'Yeah, I have to buy some presents for my parents.' <br>
+            One:В 'What's the occasion?' <br>
+            Two:В 'It's their anniversary.' <br>
+            One:В 'That's great. Well, you better get going. You don't want to be late.' <br>
+            Two:В 'I'll see you next time.' <br>
+            One:В 'Sure. Bye.' <br>
+        </p>
+
+        <h5>Обновленный текст</h5>
+        <p id="new_text"></p>
+
+    </main>
+
+
+
+    <script>
+//        let myText = document.querySelector("#text").innerHTML;
+//        let myRegExp = /\s'|'\s/g;
+//        console.log(myText.replace(myRegExp, '"'));
+//        document.querySelector("#new_text").innerHTML = myText.replace(myRegExp, '"');
+
+        //вариант, чтобы сохранить пробелы
+        let myText = document.querySelector("#text").innerHTML;
+        let myRegExp1 = /\s'/g;
+        let myRegExp2 = /'\s/g;
+        myText = myText.replace(myRegExp1, ' "');
+        myText = myText.replace(myRegExp2, '" ');
+        document.querySelector("#new_text").innerHTML = myText;
+
+    </script>
+
+
+</body>
+
+</html>
+
+
+
+<!--
+1. Дан большой текст, в котором для оформления прямой речи используются одинарные кавычки. Придумать шаблон, который заменяет одинарные кавычки на двойные.
+2. Улучшить шаблон так, чтобы в конструкциях типа aren't одинарная кавычка не заменялась на двойную.
+3. *Создать форму обратной связи с полями: Имя, Телефон, E-mail, текст, кнопка Отправить. При нажатии на кнопку Отправить произвести валидацию полей следующим образом:
+a. Имя содержит только буквы.
+b. Телефон имеет вид +7(000)000-0000.
+c. E-mail имеет вид mymail@mail.ru, или my.mail@mail.ru, или my-mail@mail.ru.
+d. Текст произвольный.
+e. Если одно из полей не прошло валидацию, необходимо выделить это поле красной рамкой и сообщить пользователю об ошибке.-->
