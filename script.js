@@ -8,9 +8,16 @@ let app = new Vue({
         catalogUrl: `/catalogData.json`,
         products: [],
         imgCatalog: `https://placehold.it/200x150`,
-        searchLine: ``,
+        imgCart: `https://placehold.it/100x75`,
         isVisibleCart: false,
+        searchLine: ``,
+        filtered: [],
+        cartItems: [],
+
     },
+
+
+
     methods: {
         getJson(url) {
             return fetch(url)
@@ -20,11 +27,43 @@ let app = new Vue({
                 })
         },
         addProduct(product) {
-            console.log(product.id_product);
+            this.getJson(`${API}/addToBasket.json`)
+                .then(data => {
+                    if (data.result) {
+                        let find = this.cartItems.find(el => el.id_product === product.id_product); //проверка есть ли этот продукт уже в корзине
+                        if (find) {
+                            find.quantity++;
+                        } else {
+                            let prod = Object.assign({
+                                quantity: 1
+                            }, product);
+                            this.cartItems.push(prod);
+                        }
+                    } else {
+                        console.log('Some error');
+                    }
+                })
+        },
+        remove(product) {
+            this.getJson(`${API}/deleteFromBasket.json`)
+                .then(data => {
+                    if (data.result) {
+                        if (product.quantity > 1) {
+                            product.quantity--;
+                        } else {
+                            this.cartItems.splice(this.cartItems.indexOf(product), 1)
+                        }
+
+                    }
+                })
         },
         FilterGoods(searchLine) {
-            console.log(this.searchLine);
+            let regExp = new RegExp(this.searchLine, `i`);
+            this.filtered = this.products.filter(el => regExp.test(el.product_name));
+            console.log(document.querySelector(input));
+
         },
+
         cartVisibility() {
             if (!this.isVisibleCart) {
                 this.isVisibleCart = true;
@@ -37,7 +76,9 @@ let app = new Vue({
         this.getJson(`${API + this.catalogUrl}`)
             .then(data => {
                 for (el of data) {
-                    this.products.push(el)
+                    this.products.push(el);
+                    this.filtered.push(el);
+
                 }
             })
         //            this.getJson(`getProducts.json`)
@@ -46,7 +87,14 @@ let app = new Vue({
         //                this.priducts.push(el)
         //            }
         //        })
-    }
+    },
+//    computed: {
+//        filSeachLineTwo() {
+//            return this.searchlineTwo = document.querySelector(`#wtf`).value;
+//            console.log("Подаю признаки жизни");
+//
+//        }
+//    }
 })
 
 

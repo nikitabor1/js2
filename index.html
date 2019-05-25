@@ -12,45 +12,26 @@
     <div id="app">
         <header>
             <h2>Интернет-магазин</h2>
-            <div class="search">
-                <input v-model="searchLine" type="text">
-                <button class="srch-btn" @click="FilterGoods(searchLine)">
-                    <h2>Искать</h2>
-                </button>
-            </div>
-            <button class="btn-cart" @click = "cartVisibility()">Корзина</button>
-            <!--            <div class="cart-block invisible"></div>-->
+            
+            <searching @filter-goods = "FilterGoods"></searching>
+            <button class="btn-cart" @click="cartVisibility()">Корзина</button>
+
         </header>
 
         <main>
-            <div class="catalogcontainer">
-                <h3>Каталог товаров</h3>
-                <div class="container">
-                    <div class="products">
-                        <div class="product-item" v-for="product of products" :key="product.id_product">
-                            <img src="" alt="">
-                            <div class="desc">
-                                <h3>{{product.product_name}}</h3>
-                                <p>{{product.price}}</p>
-                                <button class="buy-btn" @click="addProduct(product)">Купить</button>
-                            </div>
+            <products :products="filtered" :img="imgCatalog" @add-product="addProduct"></products>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="cartcontainer" v-if="isVisibleCart">
-                <h3>Корзина</h3>
-                <div class="container">
-                    <div class="cart"></div>
-                    <h3 class="cartTotal"></h3>
-                </div>
-            </div>
+            <cart :cart-items="cartItems" :img="imgCart" :visability="isVisibleCart" @remove="remove">
+            </cart>
         </main>
+        
 
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="ProdComponent.js"></script>
+    <script src="CartComponent.js"></script>
+    <script src="SearchComponent.js"></script>
     <script src="script.js"></script>
 
 
