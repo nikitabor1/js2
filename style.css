@@ -23,6 +23,22 @@ header {
     border: 1px solid white;
 }
 
+.search {
+    display: flex;
+}
+
+.srch-btn {
+    background-color: black;
+    font-size: 0.7em;
+    border: 1px solid white;
+    margin-left: 5px;
+}
+
+.srch-btn h2 {
+    color: white;
+}
+
+
 main {
     padding: 15px;
 }
