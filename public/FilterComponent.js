@@ -15,7 +15,3 @@ Vue.component('filterel', {
 `
 
 })
-
-
-
-

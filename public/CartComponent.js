@@ -15,9 +15,12 @@ Vue.component(`cart`, {
 
                 }
             });
-
     },
+
     methods: {
+
+
+
         addProduct(product) {
             let find = this.cartItems.find(el => el.id_product === product.id_product);
             if (find) {
@@ -40,27 +43,32 @@ Vue.component(`cart`, {
                         }
                     })
             }
+
         },
 
 
 
-//        remove(product) {
-//            this.$parent.putJson(`${API}/deleteFromBasket.json`)
-//                .then(data => {
-//              
-//                        if (product.quantity > 1) {
-//                            find.quantity--;
-//                        } else {
-//                            this.cartItems.splice(this.cartItems.indexOf(product), 1)
-//                 
-//
-//                    }
-//                })
-//        },
 
 
-
-
+        //        remove(product) {
+        //            if (product.quantity > 1) {
+        //                this.$parent.putJson(`/api/cart/${product.id_product}`, {
+        //                        quantity: -1
+        //                    })
+        //                    .then(data => {
+        //                        if (data.result) {
+        //                            product.quantity--
+        //                        }
+        //                    })
+        //            } else {
+        //                this.$parent.deleteJson(`/api/cart/${product.id_product}`)
+        //                    .then(data => {
+        //                        if (data.result) {
+        //                            this.cartItems.splice(this.cartItems.indexOf(product), 1);
+        //                        }
+        //                    })
+        //            }
+        //        },
 
         cartVisibility() {
             if (!this.isVisibleCart) {

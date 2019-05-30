@@ -12,6 +12,7 @@ let app = new Vue({
                     this.$refs.error.setError(error);
                 })
         },
+
         postJson(url, data) {
             return fetch(url, {
                     method: 'POST',
@@ -25,6 +26,7 @@ let app = new Vue({
                     this.$refs.error.setError(error);
                 })
         },
+        
         putJson(url, data) {
             return fetch(url, {
                     method: 'PUT',
@@ -38,19 +40,25 @@ let app = new Vue({
                     this.$refs.error.setError(error);
                 })
         },
-//        deleteJson(url, data) {
-//            return fetch(url, {
-//                    method: 'DELETE',
-//                    headers: {
-//                        "content-Type": "application/json"
-//                    },
-//                    body: JSON.stringify(data)
-//                })
-//                .then(result => result.json())
-//                .catch(error => {
-//                    this.$refs.error.setError(error);
-//                })
-//        },
+
+                deleteJson(url) {
+                    return fetch(url, {
+                            method: 'DELETE',
+                            headers: {
+                                "Content-Type": "application/json"
+                            }
+                        })
+                        .then(result => result.json())
+                        .catch(error => {
+                            this.$refs.error.setError(error);
+                            console.log(error)
+                        })
+                },
+
+
+
 
     }
-})
+});
+
+//export default app
